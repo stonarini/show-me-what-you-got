@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import edu.poniperro.domain.MagicalItem;
-// import edu.poniperro.domain.Order;
+import edu.poniperro.domain.Order;
 import edu.poniperro.domain.Wizard;
 // import edu.poniperro.repositorio.Repositorio;
 // import edu.poniperro.service.ServiceItem;
@@ -74,21 +74,19 @@ public class RepoTest {
         Assertions.assertThat(squib.toString()).contains("SQUIB"); // tipo enumerado
     }
 
-    // /**
-    // * Completa la definicion y el mapping
-    // * de la clase Order a la tabla t_orders
-    // * El id de esta clase ha de seguir una estrategia
-    // * Identity
-    // */
-    // @Test
-    // public void test_mapping_order() {
-    // Order pedido = em.find(Order.class, 1L);
-    // Assertions.assertThat(pedido).isNotNull();
-    // Assertions.assertThat(pedido.toString()).contains("Marius Black"); //
-    // ord_wizard
-    // Assertions.assertThat(pedido.toString()).containsIgnoringCase("Elixir of the
-    // Mongoose"); // ord_item
-    // }
+    /**
+     * Completa la definicion y el mapping
+     * de la clase Order a la tabla t_orders
+     * El id de esta clase ha de seguir una estrategia
+     * Identity
+     */
+    @Test
+    public void test_mapping_order() {
+        Order pedido = em.find(Order.class, 1L);
+        Assertions.assertThat(pedido).isNotNull();
+        Assertions.assertThat(pedido.toString()).contains("Marius Black"); // ord_wizard
+        Assertions.assertThat(pedido.toString()).containsIgnoringCase("Elixir of the Mongoose"); // ord_item
+    }
 
     // /**
     // * Crea una clase llamada Repositorio
