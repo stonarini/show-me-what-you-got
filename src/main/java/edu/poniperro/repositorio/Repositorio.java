@@ -37,4 +37,10 @@ public class Repositorio {
             this.createItem(item.getName(), item.getQuality(), item.getType());
         }
     }
+
+    @Transactional
+    public void deleteItem(MagicalItem item) {
+        Optional<MagicalItem> itemOptional = loadItem(item);
+        itemOptional.ifPresent(i -> i.delete());
+    }
 }
