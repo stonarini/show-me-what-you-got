@@ -31,4 +31,10 @@ public class Repositorio {
         item.persist();
     }
 
+    @Transactional
+    public void createItems(List<MagicalItem> itemList) {
+        for (MagicalItem item : itemList) {
+            this.createItem(item.getName(), item.getQuality(), item.getType());
+        }
+    }
 }
