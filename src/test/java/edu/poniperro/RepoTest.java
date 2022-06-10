@@ -14,7 +14,7 @@ import edu.poniperro.domain.Order;
 import edu.poniperro.domain.Wizard;
 import edu.poniperro.repositorio.Repositorio;
 import edu.poniperro.service.ServiceItem;
-
+import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
@@ -234,7 +234,7 @@ public class RepoTest {
      * solo con el mismo nombre.
      */
     @Test
-    @Transactional
+    @TestTransaction
     public void test_delete_item() {
         Assertions.assertThat(repo).isNotNull();
 
