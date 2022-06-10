@@ -49,37 +49,37 @@ public class ResourceTest {
                 .body(is("CRUD de Items!"));
     }
 
-    // /**
-    // * La peticion /item/{name} del controlador
-    // * ha de retornar el nombre y la quality del
-    // * primer item indicado de la base de datos.
-    // *
-    // * La consulta ha de redirigirse al servicio.
-    // * El servicio utiliza el repositorio
-    // * para hacer la consulta a la base de datos.
-    // */
-    // @Test
-    // public void test_get_item() throws Exception {
+    /**
+     * La peticion /item/{name} del controlador
+     * ha de retornar el nombre y la quality del
+     * primer item indicado de la base de datos.
+     *
+     * La consulta ha de redirigirse al servicio.
+     * El servicio utiliza el repositorio
+     * para hacer la consulta a la base de datos.
+     */
+    @Test
+    public void test_get_item() throws Exception {
 
-    // // Si el item existe la respuesta es 200
-    // given()
-    // .pathParam("name", "Aged Brie")
-    // .when()
-    // .get("/item/{name}")
-    // .then()
-    // .statusCode(200)
-    // .contentType(ContentType.JSON)
-    // .body("name", equalTo("Aged Brie"),
-    // "quality", equalTo(10));
+        // Si el item existe la respuesta es 200
+        given()
+                .pathParam("name", "Aged Brie")
+                .when()
+                .get("/item/{name}")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("name", equalTo("Aged Brie"),
+                        "quality", equalTo(10));
 
-    // // Si la item NO existe la respuesta es 404
-    // given()
-    // .pathParam("name", "Varita de Sauco")
-    // .when()
-    // .get("/item/{name}")
-    // .then()
-    // .statusCode(404);
-    // }
+        // Si la item NO existe la respuesta es 404
+        given()
+                .pathParam("name", "Varita de Sauco")
+                .when()
+                .get("/item/{name}")
+                .then()
+                .statusCode(404);
+    }
 
     // /**
     // * Guarda un item empleando el método POST en la url
