@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.Transactional;
 
 import edu.poniperro.domain.MagicalItem;
 
@@ -22,6 +23,12 @@ public class Repositorio {
 
     public List<MagicalItem> loadItems(String itemName) {
         return MagicalItem.find("item_name", itemName).list();
+    }
+
+    @Transactional
+    public void createItem(String name, Integer quality, String type) {
+        MagicalItem item = new MagicalItem(name, quality, type);
+        item.persist();
     }
 
 }

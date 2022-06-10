@@ -163,23 +163,23 @@ public class RepoTest {
         Assertions.assertThat(repo.loadItem(brie)).isEmpty();
     }
 
-    // /**
-    // * Implementa el metodo createItem() del repositorio
-    // * que crea un item en la base de datos.
-    // */
-    // @Test
-    // @Transactional
-    // public void test_create_item() {
-    // Assertions.assertThat(repo).isNotNull();
+    /**
+     * Implementa el metodo createItem() del repositorio
+     * que crea un item en la base de datos.
+     */
+    @Test
+    @Transactional
+    public void test_create_item() {
+        Assertions.assertThat(repo).isNotNull();
 
-    // repo.createItem("Guardapelo", 100, "MagicalItem");
+        repo.createItem("Guardapelo", 100, "MagicalItem");
 
-    // MagicalItem relic = repo.loadItem("Guardapelo").get();
-    // Assertions.assertThat(relic).isNotNull();
-    // Assertions.assertThat(relic.getName()).isEqualTo("Guardapelo");
-    // Assertions.assertThat(relic.getQuality()).isEqualTo(100);
-    // Assertions.assertThat(relic.getType()).isEqualTo("MagicalItem");
-    // }
+        MagicalItem relic = repo.loadItem("Guardapelo").get();
+        Assertions.assertThat(relic).isNotNull();
+        Assertions.assertThat(relic.getName()).isEqualTo("Guardapelo");
+        Assertions.assertThat(relic.getQuality()).isEqualTo(100);
+        Assertions.assertThat(relic.getType()).isEqualTo("MagicalItem");
+    }
 
     // /**
     // * Implementa el metodo createItems() del repositorio
