@@ -3,7 +3,10 @@ package edu.poniperro.resources;
 import java.util.Optional;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -31,5 +34,14 @@ public class Resource {
     public Response getItem(@PathParam("name") String name) {
         Optional<MagicalItem> item = service.loadItem(name);
         return item.isPresent() ? Response.ok(item).build() : Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @POST
+    @Path("item")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createItem(@Valid MagicalItem item) {
+        service.createItem(item.getName(), item.getQuality(), item.getType());
+        return Response.status(Response.Status.CREATED).entity(service.loadItem(item)).build();
     }
 }
