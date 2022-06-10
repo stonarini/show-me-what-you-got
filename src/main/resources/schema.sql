@@ -31,16 +31,16 @@ insert into t_wizards
         ('Marius Black', 15, 'SQUIB'),
         ('Hermione', 100, 'MUDBLOOD');
 insert into t_items 
-    (item_id, item_name, item_quality, item_type) 
+    (item_name, item_quality, item_type) 
     values 
-        (1L, '+5 Dexterity Vest', 20, 'MagicalItem'),
-        (2L, 'Elixir of the Mongoose', 7, 'MagicalItem'),
-        (3L, 'Aged Brie', 10, 'MagicalItem'),
-        (4L, 'Aged Brie', 0, 'MagicalItem'),
-        (5L, '+5 Dexterity Vest', 40, 'MagicalItem'),
-        (6L, '+5 Dexterity Vest', 60, 'MagicalItem');
+        ('+5 Dexterity Vest', 20, 'MagicalItem'),
+        ('Elixir of the Mongoose', 7, 'MagicalItem'),
+        ('Aged Brie', 10, 'MagicalItem'),
+        ('Aged Brie', 0, 'MagicalItem'),
+        ('+5 Dexterity Vest', 40, 'MagicalItem'),
+        ('+5 Dexterity Vest', 60, 'MagicalItem');
 insert into t_orders 
-    (ord_id, ord_wizard, ord_item) 
+    (ord_wizard, ord_item) 
     values 
-        (1L, 'Marius Black', 2L),
-        (2L, 'Marius Black', 3L);
+        ('Marius Black', 2L),
+        ('Marius Black', 3L);
