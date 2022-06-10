@@ -119,27 +119,25 @@ public class RepoTest {
         Assertions.assertThat(repo.loadItem("Varita de Sauco")).isEmpty();
     }
 
-    // /**
-    // * Implementa el metodo loadItems() del repositorio
-    // * que devuelve una lista de Items
-    // * con el nombre indicado
-    // *
-    // * Ojo que el nombre del item no es la clave primaria.
-    // */
-    // @Test
-    // public void test_load_items() {
-    // Assertions.assertThat(repo).isNotNull();
+    /**
+     * Implementa el metodo loadItems() del repositorio
+     * que devuelve una lista de Items
+     * con el nombre indicado
+     *
+     * Ojo que el nombre del item no es la clave primaria.
+     */
+    @Test
+    public void test_load_items() {
+        Assertions.assertThat(repo).isNotNull();
 
-    // List<MagicalItem> items = repo.loadItems("Aged Brie");
-    // Assertions.assertThat(items).isNotEmpty().hasSize(2);
-    // Assertions.assertThat(items.get(0)).hasFieldOrPropertyWithValue("name", "Aged
-    // Brie");
-    // Assertions.assertThat(items.get(1)).hasFieldOrPropertyWithValue("quality",
-    // 0);
+        List<MagicalItem> items = repo.loadItems("Aged Brie");
+        Assertions.assertThat(items).isNotEmpty().hasSize(2);
+        Assertions.assertThat(items.get(0)).hasFieldOrPropertyWithValue("name", "Aged Brie");
+        Assertions.assertThat(items.get(1)).hasFieldOrPropertyWithValue("quality", 0);
 
-    // // si no existe el item
-    // Assertions.assertThat(repo.loadItems("Varita de Sauco")).isEmpty();
-    // }
+        // si no existe el item
+        Assertions.assertThat(repo.loadItems("Varita de Sauco")).isEmpty();
+    }
 
     // /**
     // * Implementa el metodo loadItem(name, quality, type)

@@ -1,5 +1,6 @@
 package edu.poniperro.repositorio;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -11,6 +12,10 @@ public class Repositorio {
 
     public Optional<MagicalItem> loadItem(String itemName) {
         return MagicalItem.find("item_name", itemName).firstResultOptional();
+    }
+
+    public List<MagicalItem> loadItems(String itemName) {
+        return MagicalItem.find("item_name", itemName).list();
     }
 
 }
