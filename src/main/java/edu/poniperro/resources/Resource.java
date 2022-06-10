@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -52,5 +53,14 @@ public class Resource {
     public Response createItem(@Valid MagicalItem item) {
         service.createOneItem(item.getName(), item.getQuality(), item.getType());
         return Response.status(Response.Status.CREATED).entity(service.getOneItem(item)).build();
+    }
+
+    @DELETE
+    @Path("item")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteItem(@Valid MagicalItem item) {
+        service.deleteItem(item);
+        return Response.ok(service.getAllItemsByName(item.getName())).build();
     }
 }

@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import edu.poniperro.resources.Resource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 
@@ -53,7 +52,7 @@ public class ResourceTest {
      * La peticion /item/{name} del controlador
      * ha de retornar el nombre y la quality del
      * primer item indicado de la base de datos.
-     *
+     * 
      * La consulta ha de redirigirse al servicio.
      * El servicio utiliza el repositorio
      * para hacer la consulta a la base de datos.
@@ -88,16 +87,16 @@ public class ResourceTest {
      * "name" con el nombre del item
      * "quality" con la calidad del item
      * "type" con el tio de item.
-     *
+     * 
      * La peticion ha de retornar el item JSON
      * y status code 201 si ha sido generada
      * o 404 en caso contrario.
-     *
+     * 
      * El item devuelto ha de ser IDENTICO al que
      * acabas de crear, con el mismo name, quality y type,
      * y no cualquier otro item de la base de datos
      * solo con el mismo nombre.
-     *
+     * 
      * La peticion ha de redirigirse al servicio.
      * El servicio utiliza el repositorio
      * para hacer la consulta a la base de datos.
@@ -149,7 +148,7 @@ public class ResourceTest {
      * La peticion /items/{name} del controlador
      * ha de retornar una lista de items
      * de la base de datos como el indicado.
-     *
+     * 
      * La consulta ha de redirigirse al servicio.
      * El servicio utiliza el repositorio
      * para hacer la consulta a la base de datos.
@@ -178,39 +177,38 @@ public class ResourceTest {
                 .statusCode(404);
     }
 
-    // /**
-    // * Elimina un item empleando el método DELETE en la url
-    // * /item/
-    // * Los parametros post necesarios, en un JSON, son:
-    // * "name" con el nombre del item
-    // * "quality" con la calidad del item
-    // * "type" con el tio de item.
-    // *
-    // * La peticion ha de retornar una lista
-    // * de items JSON y status code 200.
-    // *
-    // * El item eliminado ha de tener el mismo
-    // * name, quality y type que el de la peticion
-    // * y no cualquier otro item de la base de datos
-    // * solo con el mismo nombre.
-    // *
-    // * La peticion ha de redirigirse al servicio.
-    // * El servicio utiliza el repositorio
-    // * para hacer la consulta a la base de datos.
-    // */
+    /**
+     * Elimina un item empleando el método DELETE en la url
+     * /item/
+     * Los parametros post necesarios, en un JSON, son:
+     * "name" con el nombre del item
+     * "quality" con la calidad del item
+     * "type" con el tio de item.
+     * 
+     * La peticion ha de retornar una lista
+     * de items JSON y status code 200.
+     * 
+     * El item eliminado ha de tener el mismo
+     * name, quality y type que el de la peticion
+     * y no cualquier otro item de la base de datos
+     * solo con el mismo nombre.
+     * 
+     * La peticion ha de redirigirse al servicio.
+     * El servicio utiliza el repositorio
+     * para hacer la consulta a la base de datos.
+     */
 
-    // @Test
-    // public void test_delete_item() {
+    @Test
+    public void test_delete_item() {
 
-    // given()
-    // .body("{\"name\": \"+5 Dexterity Vest\", \"quality\": \"60\", \"type\":
-    // \"MagicalItem\"}")
-    // .header("Content-Type", MediaType.APPLICATION_JSON)
-    // .when()
-    // .delete("/item/")
-    // .then()
-    // .statusCode(200)
-    // .body("$.size()", is(2));
-    // }
+        given()
+                .body("{\"name\": \"+5 Dexterity Vest\", \"quality\": \"60\", \"type\": \"MagicalItem\"}")
+                .header("Content-Type", MediaType.APPLICATION_JSON)
+                .when()
+                .delete("/item/")
+                .then()
+                .statusCode(200)
+                .body("$.size()", is(2));
+    }
 
 }
