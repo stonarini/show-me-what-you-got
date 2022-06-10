@@ -119,31 +119,31 @@ public class ResourceTest {
                         "type", equalTo("MagicalItem"));
     }
 
-    // /**
-    // * Asegurate que el item no se crea
-    // * si alguna de sus propiedades es nula o vacia.
-    // * El controlador devuelve 400 por defecto si
-    // * el documento JSON no satisface la validacion.
-    // */
-    // @Test
-    // public void test_post_item_ko() {
+    /**
+     * Asegurate que el item no se crea
+     * si alguna de sus propiedades es nula o vacia.
+     * El controlador devuelve 400 por defecto si
+     * el documento JSON no satisface la validacion.
+     */
+    @Test
+    public void test_post_item_ko() {
 
-    // given()
-    // .body("{\"name\": \"Sorting Hat\", \"quality\": \"50\", \"type\": \"\"}")
-    // .header("Content-Type", MediaType.APPLICATION_JSON)
-    // .when()
-    // .post("/item")
-    // .then()
-    // .statusCode(400);
+        given()
+                .body("{\"name\": \"Sorting Hat\", \"quality\": \"50\", \"type\": \"\"}")
+                .header("Content-Type", MediaType.APPLICATION_JSON)
+                .when()
+                .post("/item")
+                .then()
+                .statusCode(400);
 
-    // given()
-    // .body("{\"name\": \"\", \"quality\": \"50\", \"type\": \"\"}")
-    // .header("Content-Type", MediaType.APPLICATION_JSON)
-    // .when()
-    // .post("/item")
-    // .then()
-    // .statusCode(400);
-    // }
+        given()
+                .body("{\"name\": \"\", \"quality\": \"50\", \"type\": \"\"}")
+                .header("Content-Type", MediaType.APPLICATION_JSON)
+                .when()
+                .post("/item")
+                .then()
+                .statusCode(400);
+    }
 
     // /**
     // * La peticion /items/{name} del controlador

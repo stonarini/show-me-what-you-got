@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
@@ -23,9 +24,11 @@ public class MagicalItem extends PanacheEntityBase {
     @Column(name = "item_name")
     private String name;
 
+    @NotNull
     @Column(name = "item_quality")
     private Integer quality;
 
+    @NotBlank
     @Column(name = "item_type")
     private String type;
 
