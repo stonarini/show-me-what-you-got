@@ -32,22 +32,22 @@ public class ResourceTest {
         Assertions.assertThat(resources.service).isNotNull();
     }
 
-    // /**
-    // * En el endpoint /itemcrudos
-    // * recibimos un TEXT con el mensaje
-    // * "CRUD de Items!""
-    // */
+    /**
+     * En el endpoint /itemcrudos
+     * recibimos un TEXT con el mensaje
+     * "CRUD de Items!""
+     */
 
-    // @Test
-    // public void test_wellcome() {
-    // given()
-    // .contentType(ContentType.TEXT)
-    // .when()
-    // .get("/itemcrudos")
-    // .then()
-    // .statusCode(200)
-    // .body(is("CRUD de Items!"));
-    // }
+    @Test
+    public void test_wellcome() {
+        given()
+                .contentType(ContentType.TEXT)
+                .when()
+                .get("/itemcrudos")
+                .then()
+                .statusCode(200)
+                .body(is("CRUD de Items!"));
+    }
 
     // /**
     // * La peticion /item/{name} del controlador
