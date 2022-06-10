@@ -1,9 +1,9 @@
-# Show-Me-What-You-Got
+# Show Me What You Got
 
 ## VII. Examen Programación DAW Dual
 ```
             ___
-	    . -^    `--,
+    . -^    `--,
        /# =========`-_
       /# (--===___====\
      /#   .- --.  . --.|
@@ -40,10 +40,10 @@ El script te deja crear la imagen, subirla a dockerhub y arrancar el contenedor.
 
 Luego me tome' la libertad de crear un script que crea la imagen nativa, que hace uso de un h2 arrancado con otra imagen custom creada con el dockerfile *Dockerfile.h2*.  
 Para poder usar este script tenemos que poner la siguente linea en el *application.properties*:
-```
+```conf
 %native.quarkus.datasource.jdbc.url=jdbc:h2:tcp://h2/~/default;DB_CLOSE_DELAY=-1
 ```
-Luego el script ejecuta docker compose, que arranca un contenedor con quarkus nativo y otro con h2, llamado *h2*, la jdbc.url de native se conectara a este contenedor.
+Luego el script ejecuta docker compose, que arranca un contenedor con quarkus nativo y otro con h2, llamado *h2*, la jdbc.url del perfil native se conectara a este contenedor.
 
 ## DockerHub Repo
 [stonarini](https://hub.docker.com/repository/docker/stonarini/showmewhatyougot)
