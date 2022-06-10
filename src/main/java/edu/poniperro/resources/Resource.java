@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -48,6 +49,7 @@ public class Resource {
 
     @POST
     @Path("item")
+    @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createItem(@Valid MagicalItem item) {
@@ -57,10 +59,13 @@ public class Resource {
 
     @DELETE
     @Path("item")
+    @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteItem(@Valid MagicalItem item) {
         service.deleteItem(item);
-        return Response.ok(service.getAllItemsByName(item.getName())).build();
+        List<MagicalItem> test = service.getAllItemsByName(item.getName());
+        System.out.print(test);
+        return Response.ok(test).build();
     }
 }
