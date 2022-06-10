@@ -145,38 +145,38 @@ public class ResourceTest {
                 .statusCode(400);
     }
 
-    // /**
-    // * La peticion /items/{name} del controlador
-    // * ha de retornar una lista de items
-    // * de la base de datos como el indicado.
-    // *
-    // * La consulta ha de redirigirse al servicio.
-    // * El servicio utiliza el repositorio
-    // * para hacer la consulta a la base de datos.
-    // */
-    // @Test
-    // public void test_get_items() throws Exception {
+    /**
+     * La peticion /items/{name} del controlador
+     * ha de retornar una lista de items
+     * de la base de datos como el indicado.
+     *
+     * La consulta ha de redirigirse al servicio.
+     * El servicio utiliza el repositorio
+     * para hacer la consulta a la base de datos.
+     */
+    @Test
+    public void test_get_items() throws Exception {
 
-    // // Si el item existe la respuesta es 200
-    // given()
-    // .pathParam("name", "Aged Brie")
-    // .when()
-    // .get("/items/{name}")
-    // .then()
-    // .statusCode(200)
-    // .contentType(ContentType.JSON)
-    // .body("$.size()", is(2),
-    // "name", containsInAnyOrder("Aged Brie", "Aged Brie"),
-    // "quality", containsInAnyOrder(10, 0));
+        // Si el item existe la respuesta es 200
+        given()
+                .pathParam("name", "Aged Brie")
+                .when()
+                .get("/items/{name}")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("$.size()", is(2),
+                        "name", containsInAnyOrder("Aged Brie", "Aged Brie"),
+                        "quality", containsInAnyOrder(10, 0));
 
-    // // Si el item NO existe la respuesta es 404
-    // given()
-    // .pathParam("name", "Varita de Sauco")
-    // .when()
-    // .get("/items/{name}")
-    // .then()
-    // .statusCode(404);
-    // }
+        // Si el item NO existe la respuesta es 404
+        given()
+                .pathParam("name", "Varita de Sauco")
+                .when()
+                .get("/items/{name}")
+                .then()
+                .statusCode(404);
+    }
 
     // /**
     // * Elimina un item empleando el método DELETE en la url

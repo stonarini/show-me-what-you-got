@@ -1,5 +1,6 @@
 package edu.poniperro.resources;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.inject.Inject;
@@ -34,6 +35,14 @@ public class Resource {
     public Response getItem(@PathParam("name") String name) {
         Optional<MagicalItem> item = service.getOneItemByName(name);
         return item.isPresent() ? Response.ok(item).build() : Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @GET
+    @Path("items/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getItems(@PathParam("name") String name) {
+        List<MagicalItem> itemList = service.getAllItemsByName(name);
+        return itemList.size() > 0 ? Response.ok(itemList).build() : Response.status(Response.Status.NOT_FOUND).build();
     }
 
     @POST
