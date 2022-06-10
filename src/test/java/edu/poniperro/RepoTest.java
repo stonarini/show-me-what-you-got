@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import edu.poniperro.domain.MagicalItem;
 import edu.poniperro.domain.Order;
 import edu.poniperro.domain.Wizard;
-// import edu.poniperro.repositorio.Repositorio;
+import edu.poniperro.repositorio.Repositorio;
 // import edu.poniperro.service.ServiceItem;
 
 import io.quarkus.test.junit.QuarkusTest;
@@ -23,8 +23,8 @@ public class RepoTest {
     @PersistenceContext
     EntityManager em;
 
-    // @Inject
-    // Repositorio repo;
+    @Inject
+    Repositorio repo;
 
     // @Inject
     // ServiceItem servicio;
@@ -88,15 +88,15 @@ public class RepoTest {
         Assertions.assertThat(pedido.toString()).containsIgnoringCase("Elixir of the Mongoose"); // ord_item
     }
 
-    // /**
-    // * Crea una clase llamada Repositorio
-    // * e inyectala en los casos test
-    // * (ha de ser un bean)
-    // */
-    // @Test
-    // public void test_repositorio_existe() {
-    // Assertions.assertThat(repo).isNotNull();
-    // }
+    /**
+     * Crea una clase llamada Repositorio
+     * e inyectala en los casos test
+     * (ha de ser un bean)
+     */
+    @Test
+    public void test_repositorio_existe() {
+        Assertions.assertThat(repo).isNotNull();
+    }
 
     // /**
     // * Implementa el metodo loadItem() del repositorio
