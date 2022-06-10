@@ -14,6 +14,12 @@ public class Repositorio {
         return MagicalItem.find("item_name", itemName).firstResultOptional();
     }
 
+    public Optional<MagicalItem> loadItem(MagicalItem item) {
+        return MagicalItem
+                .find("name = ?1 and quality = ?2 and type = ?3", item.getName(), item.getQuality(), item.getType())
+                .firstResultOptional();
+    }
+
     public List<MagicalItem> loadItems(String itemName) {
         return MagicalItem.find("item_name", itemName).list();
     }

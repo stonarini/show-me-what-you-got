@@ -139,29 +139,29 @@ public class RepoTest {
         Assertions.assertThat(repo.loadItems("Varita de Sauco")).isEmpty();
     }
 
-    // /**
-    // * Implementa el metodo loadItem(name, quality, type)
-    // * del repositorio que devuelve un Optional del Item
-    // * con el nombre indicado.
-    // *
-    // * El item devuelto ha de tener el mismo
-    // * name, quality y type que el de la peticion
-    // * y no cualquier otro item de la base de datos
-    // * que tenga sólo el mismo nombre.
-    // */
-    // @Test
-    // public void test_load_item_equal() {
-    // Assertions.assertThat(repo).isNotNull();
-    // MagicalItem brie = new MagicalItem("Aged Brie", 0, "MagicalItem");
-    // MagicalItem item = repo.loadItem(brie).get();
-    // Assertions.assertThat(item).isNotNull();
-    // Assertions.assertThat(item.getName()).isEqualTo("Aged Brie");
-    // Assertions.assertThat(item.getQuality()).isZero();
+    /**
+     * Implementa el metodo loadItem(name, quality, type)
+     * del repositorio que devuelve un Optional del Item
+     * con el nombre indicado.
+     *
+     * El item devuelto ha de tener el mismo
+     * name, quality y type que el de la peticion
+     * y no cualquier otro item de la base de datos
+     * que tenga sólo el mismo nombre.
+     */
+    @Test
+    public void test_load_item_equal() {
+        Assertions.assertThat(repo).isNotNull();
+        MagicalItem brie = new MagicalItem("Aged Brie", 0, "MagicalItem");
+        MagicalItem item = repo.loadItem(brie).get();
+        Assertions.assertThat(item).isNotNull();
+        Assertions.assertThat(item.getName()).isEqualTo("Aged Brie");
+        Assertions.assertThat(item.getQuality()).isZero();
 
-    // // si no existe el item
-    // brie = new MagicalItem("Aged Brie", 1000, "MagicalItem");
-    // Assertions.assertThat(repo.loadItem(brie)).isEmpty();
-    // }
+        // si no existe el item
+        brie = new MagicalItem("Aged Brie", 1000, "MagicalItem");
+        Assertions.assertThat(repo.loadItem(brie)).isEmpty();
+    }
 
     // /**
     // * Implementa el metodo createItem() del repositorio
