@@ -13,7 +13,7 @@ import edu.poniperro.domain.MagicalItem;
 import edu.poniperro.domain.Order;
 import edu.poniperro.domain.Wizard;
 import edu.poniperro.repositorio.Repositorio;
-// import edu.poniperro.service.ServiceItem;
+import edu.poniperro.service.ServiceItem;
 
 import io.quarkus.test.junit.QuarkusTest;
 
@@ -26,8 +26,8 @@ public class RepoTest {
     @Inject
     Repositorio repo;
 
-    // @Inject
-    // ServiceItem servicio;
+    @Inject
+    ServiceItem servicio;
 
     /**
      * Tests sobre los mappings
@@ -56,11 +56,11 @@ public class RepoTest {
     /**
      * Completa la definicion y el mapping
      * de la clase Wizards a la tabla t_wizards
-     *
+     * 
      * Los Wizards tiene una propiedad "person" de
      * un tipo enumerado con los valores:
      * MUGGLE, SQUIB, NOMAJ, MUDBLOOD
-     *
+     * 
      * La anotacion javax.persistence para mapear
      * a una tabla una propiedad Enum es
      * @Enumerated(EnumType.STRING)
@@ -101,9 +101,9 @@ public class RepoTest {
     /**
      * Implementa el metodo loadItem() del repositorio
      * que devuelve un Optional del Item con el nombre indicado.
-     *
+     * 
      * Ojo que el nombre del item no es la clave primaria.
-     *
+     * 
      * El metodo devueve el primer item cuyo nombre
      * coincida con el especificado.
      */
@@ -123,7 +123,7 @@ public class RepoTest {
      * Implementa el metodo loadItems() del repositorio
      * que devuelve una lista de Items
      * con el nombre indicado
-     *
+     * 
      * Ojo que el nombre del item no es la clave primaria.
      */
     @Test
@@ -143,7 +143,7 @@ public class RepoTest {
      * Implementa el metodo loadItem(name, quality, type)
      * del repositorio que devuelve un Optional del Item
      * con el nombre indicado.
-     *
+     * 
      * El item devuelto ha de tener el mismo
      * name, quality y type que el de la peticion
      * y no cualquier otro item de la base de datos
@@ -184,7 +184,7 @@ public class RepoTest {
     /**
      * Implementa el metodo createItems() del repositorio
      * que crea los items indicados en la base de datos.
-     *
+     * 
      * Asegurate de que el metodo loadItem() anterior
      * devueve el primer item cuyo nombre
      * coincida con el especificado, sino, tu codigo
@@ -200,12 +200,9 @@ public class RepoTest {
         List<MagicalItem> items = List.of(
                 new MagicalItem("Sulfuras, Hand of Ragnaros", 0, "MagicalItem"),
                 new MagicalItem("Sulfuras, Hand of Ragnaros", -1, "MagicalItem"),
-                new MagicalItem("Backstage passes to a TAFKAL80ETC concert", 15,
-                        "MagicalItem"),
-                new MagicalItem("Backstage passes to a TAFKAL80ETC concert", 10,
-                        "MagicalItem"),
-                new MagicalItem("Backstage passes to a TAFKAL80ETC concert", 5,
-                        "MagicalItem"));
+                new MagicalItem("Backstage passes to a TAFKAL80ETC concert", 15, "MagicalItem"),
+                new MagicalItem("Backstage passes to a TAFKAL80ETC concert", 10, "MagicalItem"),
+                new MagicalItem("Backstage passes to a TAFKAL80ETC concert", 5, "MagicalItem"));
 
         repo.createItems(items);
 
@@ -230,7 +227,7 @@ public class RepoTest {
      * "name" con el nombre del item
      * "quality" con la calidad del item
      * "type" con el tipo de item.
-     *
+     * 
      * El item eliminado ha de tener el mismo
      * name, quality y type que el de la peticion
      * y no cualquier otro item de la base de datos
@@ -259,19 +256,19 @@ public class RepoTest {
         Assertions.assertThat(vest).isNull();
     }
 
-    // /**
-    // * Implementa un servicio,
-    // * indica que es un bean
-    // * e inyectalo en los casos test
-    // */
-    // @Test
-    // public void test_servicio_existe() {
-    // Assertions.assertThat(servicio).isNotNull();
-    // }
+    /**
+     * Implementa un servicio,
+     * indica que es un bean
+     * e inyectalo en los casos test
+     */
+    @Test
+    public void test_servicio_existe() {
+        Assertions.assertThat(servicio).isNotNull();
+    }
 
-    // /**
-    // * Recuerda inyectar el repositorio en el servicio
-    // * y continua completando los test del Resources.
-    // */
+    /**
+     * Recuerda inyectar el repositorio en el servicio
+     * y continua completando los test del Resources.
+     */
 
 }
